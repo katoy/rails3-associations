@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @idea.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @idea.description %>
+</p>
+
+<p>
+  <b>Picture:</b>
+  <%= image_tag(@idea.picture_url, width: 400) if @idea.picture.present? %>
+</p>
+
+<h3>Comments</h3>
+<% @idea.comments.each_with_index do |comment, idx| %>
+  <% if comment.created_at %>
+    <div>
+      <%= "No. #{idx + 1}:" -%>
+      <strong><%= "#{comment.user_name}" -%></strong>
+      <%= link_to 'Edit', edit_comment_path(comment) %> |
+      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <p>
+	<%= "#{comment.body}" -%>
+      </p>
+    </div>
+  <% end %>
+<% end %>
+
+<%= render 'comments/form' %>
+
+<%= link_to 'Edit', edit_idea_path(@idea) %> |
+<%= link_to 'Back', ideas_path %>

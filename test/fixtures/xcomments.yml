@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+comment_1:
+  user_name: katoy
+  body: MyText 1
+  idea: one
+
+comment_1_1:
+  user_name: katoy
+  body: MyText 1_1
+  idea: one
+
+comment_2:
+  user_name: emanon
+  body: MyText 2
+  idea: two

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: IDEA_001
+  description: MyText 001
+
+two:
+  name: IDEA_002
+  description: MyText 002
