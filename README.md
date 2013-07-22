@@ -25,6 +25,24 @@
 ------
 　　idea (m) <--> (m) idea
 
+ポリモフィック（polymorphic）関連
+----------
+    idea    --|
+	          |-- picture
+    comment --|  
+
+　　[idea]
+　　　has_many :pictures, as: :imageable
+
+　　[comment]
+　　　has_many :pictures, as: :imageable
+
+　　[picture]
+　　　belongs_to: imageable, polymorphic: true
+
+　　in Fixture:
+      imageable:  one (idea)
+　　　imageable:  one (commnet)
 
 操作
 -----
@@ -76,3 +94,5 @@ See
 - http://memo.yomukaku.net/entries/187
 　　validates :uniquenessはuniquenessを保証しないのでDBにindexをつけましょう！
 
+- http://ruby-journal.com/rails/define-fixtures-with-polymorphic-association/
+　　Define Fixtures With Polymorphic Association

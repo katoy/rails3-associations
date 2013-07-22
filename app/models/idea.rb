@@ -13,5 +13,7 @@ class Idea < ActiveRecord::Base
   has_many :xcomments
   has_one :xinfo
 
+  has_many :pictures, as: :imageable
+
   validates :name, presence: true, length: (4..10), uniqueness: true
 end
