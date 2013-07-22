@@ -1,7 +1,7 @@
 
-[![Build Status](https://travis-ci.org/katoy/rails3-ssociations.png?branch=master)](https://travis-ci.org/katoy/rails3-ssociations)
-[![Dependency Status](https://gemnasium.com/katoy/rails3-ssociations.png)](https://gemnasium.com/katoy/rails3-ssociations)
-[![Coverage Status](https://coveralls.io/repos/katoy/rails3-ssociations/badge.png)](https://coveralls.io/r/katoy/rails3-ssociations)
+[![Build Status](https://travis-ci.org/katoy/rails3-associations.png?branch=master)](https://travis-ci.org/katoy/rails3-associations)
+[![Dependency Status](https://gemnasium.com/katoy/rails3-associations.png)](https://gemnasium.com/katoy/rails3-associations)
+[![Coverage Status](https://coveralls.io/repos/katoy/rails3-associations/badge.png)](https://coveralls.io/r/katoy/rails3-associations)
 
 １対多
 -------
