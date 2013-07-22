@@ -119,11 +119,11 @@ class IdeaTest < ActiveSupport::TestCase
   end
 
   test "can read polymorphic" do
-   assert_equal @idea.imageables.size, 1
-   assert_equal @idea.imageables[0].name, "picture_1"
+   assert_equal @idea.pictures.size, 1
+   assert_equal @idea.pictures[0].name, "picture_1"
 
    p = Picture.first
-   assert_equal p.imageable_type, 'Idea'
-   assert_equal p.imageable.name, 'IDEA_001'
+   assert_equal p.imageable_type, 'Comment'
+   assert_equal p.imageable.user_name, 'katoy'
   end
 end

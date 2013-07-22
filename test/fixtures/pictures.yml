@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: picture_1
   imageable: one (Idea)
 
 two:
-  name: MyString
+  name: picture_2
   imageable: comment_1 (Comment)
