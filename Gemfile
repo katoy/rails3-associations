@@ -52,12 +52,14 @@ gem 'mini_magick'
 
 
 group :development do
-  gem "rails-erd"
+  gem 'rails-erd'
+  gem 'yard', require: false
+  gem 'redcarpet', require: false
 end
 
 group :test do
-  gem 'simplecov', :require => false
-  gem 'simplecov-rcov', :require => false
+  gem 'simplecov', require: false
+  gem 'simplecov-rcov', require: false
   gem 'coveralls', require: false
 end
 

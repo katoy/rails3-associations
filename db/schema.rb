@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20130722133736) do
   add_index "ideas", ["name"], :name => "index_ideas_on_name", :unique => true
 
   create_table "infos", :force => true do |t|
-    t.string   "writer"
+    t.string   "writer",     :null => false
     t.integer  "idea_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(:version => 20130722133736) do
   add_index "xcomments", ["idea_id"], :name => "index_xcomments_on_idea_id"
 
   create_table "xinfos", :force => true do |t|
-    t.string   "writer"
+    t.string   "writer",     :null => false
     t.integer  "idea_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

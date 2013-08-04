@@ -15,5 +15,6 @@ class Idea < ActiveRecord::Base
 
   has_many :pictures, as: :imageable
 
-  validates :name, presence: true, length: (4..10), uniqueness: true
+  validates :name, length: (4..10), uniqueness: true
+  validates_associated :info
 end

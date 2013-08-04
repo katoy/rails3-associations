@@ -71,7 +71,7 @@
 
  validates で 文字列長さ [4..10] の制限が有効なことをテストしている。
 
-* $ rake erd filetype=png
+* $ rake erd orientation=vertical filetype=png
 
  ./erd.png として ER 図を生成する。
 

@@ -107,6 +107,7 @@ class IdeaTest < ActiveSupport::TestCase
     idea.name = "1234"
     idea.description = "1234"
     idea.save!(validate: false)
+    assert_equal idea.errors.full_messages, []
 
     idea = Idea.new
     idea.name = "1234"
@@ -126,4 +127,81 @@ class IdeaTest < ActiveSupport::TestCase
    assert_equal p.imageable_type, 'Comment'
    assert_equal p.imageable.user_name, 'katoy'
   end
+
+  test "success in tansaction for idea and info" do
+    @idea = nil
+    begin
+      Idea.transaction do
+        info = Info.new
+        info.writer = "t_kato"
+        
+        @idea = Idea.new
+        @idea.name = "idea_t01"
+        @idea.description = "about about about"
+        @idea.info= info
+        @idea.info.writer = "t_kato"
+        @idea.save!
+      end
+      assert true
+    rescue
+      assert false
+    end
+
+    assert_equal @idea.errors.full_messages, []
+    assert_equal @idea.info.errors.full_messages, []
+
+    idea = Idea.find_by_name "idea_t01"
+    assert idea != nil
+    assert_equal idea.info.writer, "t_kato"
+    info = Info.find_by_writer "t_kato"
+    assert_equal info.idea.name, "idea_t01"
+
+  end
+
+  test "error on idea in transaction" do
+    @idea = nil
+    @info = nil
+    begin
+      Idea.transaction do
+        @info = Info.new
+        @info.writer = "t_kato"
+        
+        @idea = Idea.new
+        @idea.name = nil  
+        @idea.description = "about about about"
+        @idea.info= @info
+        @idea.save!
+      end      
+      assert false
+    rescue
+      assert true
+      assert_equal @idea.errors.size, 1
+      assert_equal @idea.errors.full_messages, ["Name is too short (minimum is 4 characters)"]
+
+      assert_equal @idea.info.errors.full_messages, []
+    end
+  end
+
+  test "error on info in transaction" do
+    @idea = Idea.new
+    @info = Info.new
+    begin
+      Idea.transaction do
+        @info.writer = nil
+        @info.save!
+        
+        @idea.name = "idea_t01" 
+        @idea.description = "about about about"
+        @idea.info= info
+        @idea.save!
+      end      
+      assert false, "can not cathc error"
+    rescue
+      assert true
+      assert_equal @idea.errors.full_messages, []
+      assert_equal @idea.info, nil
+      assert_equal @info.errors.full_messages, ["Writer is too short (minimum is 1 characters)"]
+    end
+  end
+  
 end
