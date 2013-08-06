@@ -53,7 +53,6 @@ gem 'mini_magick'
 
 group :development do
   gem 'rails-erd'
-  gem 'yard', require: false
   gem 'redcarpet', require: false
 end
 
@@ -62,5 +61,7 @@ group :test do
   gem 'simplecov-rcov', require: false
   gem 'coveralls', require: false
 end
+
+gem 'yard', require: false
 
 gem 'coveralls', require: false
