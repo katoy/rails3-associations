@@ -7,7 +7,7 @@
 
 <p>
   <b>Description:</b>
-  <%= @idea.description %>
+  <%= simple_format @idea.description %>
 </p>
 
 <p>
@@ -15,16 +15,17 @@
   <%= image_tag(@idea.picture_url, width: 400) if @idea.picture.present? %>
 </p>
 
-<h3>Comments</h3>
+<strong>コメントの追加：</strong>
+
 <% @idea.comments.each_with_index do |comment, idx| %>
   <% if comment.created_at %>
     <div>
       <%= "No. #{idx + 1}:" -%>
       <strong><%= "#{comment.user_name}" -%></strong>
-      <%= link_to 'Edit', edit_comment_path(comment) %> |
-      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_comment_path(comment), class: :btn %>
+      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn %>
       <p>
-	<%= "#{comment.body}" -%>
+	<%= simple_format comment.body -%>
       </p>
     </div>
   <% end %>
@@ -32,5 +33,5 @@
 
 <%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>
+<%= link_to 'Edit', edit_idea_path(@idea), class: :btn %>
+<%= link_to 'Back to index', ideas_path, class: :btn %>

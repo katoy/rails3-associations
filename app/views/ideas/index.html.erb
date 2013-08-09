@@ -13,15 +13,15 @@
 <% @ideas.each do |idea| %>
   <tr>
     <td><%= idea.name %></td>
-    <td><%= idea.description %></td>
+    <td><%= simple_format idea.description %></td>
     <td><%= idea.picture %></td>
-    <td><%= link_to 'Show', idea %></td>
-    <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', idea, class: :btn %></td>
+    <td><%= link_to 'Edit', edit_idea_path(idea), class: :btn %></td>
+    <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to 'New Idea', new_idea_path, class: :btn %>

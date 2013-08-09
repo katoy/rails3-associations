@@ -7,6 +7,8 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
+gem 'thin'
+
 gem 'carrierwave'
 
 # Gems used only for assets and not required
@@ -20,6 +22,8 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'simple_form'
 
 gem 'jquery-rails'
 
@@ -36,7 +40,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
 
 group :development do
   gem 'better_errors'
@@ -65,3 +69,5 @@ end
 gem 'yard', require: false
 
 gem 'coveralls', require: false
+
+gem 'passenger'
