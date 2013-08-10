@@ -12,7 +12,7 @@
  *= require_tree .
  */
 
-body { padding-top: 60px; }
+body { padding-top: 0; }
 .container { margin-left: 40px; }
 footer { margin-top: 60px; }
 table, td, th { vertical-align: middle !important; border: none !important; }

@@ -1,26 +1,26 @@
 <h1>Listing comments</h1>
 
-<% if @comment == nil %>
+<% if @comments == nil or @comments.size == 0 %>
   コメントはまだありません。
 <% else %>
-  <table>
+  <table class="table table-striped table-condensed table-hover">
     <tr>
       <th>User name</th>
       <th>Body</th>
       <th>Idea</th>
       <th></th>
-      <th></th>
-      <th></th>
     </tr>
     
     <% @comments.each do |comment| %>
     <tr>
-      <td><%= comment.user_name %></td>
-      <td><%= simple_format comment.body %></td>
-      <td><%= comment.idea.name %></td>
-      <td><%= link_to 'Show', comment, class: :btn %></td>
-      <td><%= link_to 'Edit', edit_comment_path(comment), class: :btn %></td>
-      <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn %></td>
+      <td><%= comment.user_name -%></td>
+      <td><%= simple_format comment.body -%></td>
+      <td><%= comment.idea.name -%></td>
+      <td nowrap>
+	<%= link_to 'Show', comment, class: :btn -%>
+        <%= link_to 'Edit', edit_comment_path(comment), class: :btn -%>
+	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn -%>
+      </td>
     </tr>
     <% end %>
   </table>

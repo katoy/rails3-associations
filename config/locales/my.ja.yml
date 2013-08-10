@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    attributes:
+      idea:
+        name: 名前
+        description:
+        picture:
+      comment:
+        user_name: 名前
+        body:
+      info:
+        writer: 名前
+      picture:
+        name: 名前

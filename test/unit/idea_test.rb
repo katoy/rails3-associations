@@ -176,7 +176,7 @@ class IdeaTest < ActiveSupport::TestCase
     rescue
       assert true
       assert_equal @idea.errors.size, 1
-      assert_equal @idea.errors.full_messages, ["Name is too short (minimum is 4 characters)"]
+      assert_equal @idea.errors.full_messages, ["名前は4文字以上で入力してください。"]
 
       assert_equal @idea.info.errors.full_messages, []
     end
@@ -195,12 +195,12 @@ class IdeaTest < ActiveSupport::TestCase
         @idea.info= info
         @idea.save!
       end      
-      assert false, "can not cathc error"
+      assert false, "can not catch error"
     rescue
       assert true
       assert_equal @idea.errors.full_messages, []
       assert_equal @idea.info, nil
-      assert_equal @info.errors.full_messages, ["Writer is too short (minimum is 1 characters)"]
+      assert_equal @info.errors.full_messages, ["名前は1文字以上で入力してください。"]
     end
   end
   
