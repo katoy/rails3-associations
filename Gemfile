@@ -57,7 +57,6 @@ gem 'foreigner'
 gem 'carrierwave'
 gem 'mini_magick'
 
-
 group :development do
   gem 'rails-erd'
   gem 'redcarpet', require: false
@@ -67,6 +66,13 @@ group :test do
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'coveralls', require: false
+
+  # テスト自動化用のライブラリ
+  gem 'poltergeist'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'rspec'
+  gem 'rspec-rails', '>= 2.0.0', :group => :development
 end
 
 gem 'i18n-missing_translations'
