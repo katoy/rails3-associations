@@ -1,20 +1,19 @@
-<p id="notice"><%= notice %></p>
+<h1><%= I18n.t(:title_show_comment, scope: :"views.labels") -%></h1>
 
 <p>
-  <b>User name:</b>
+  <b><%= I18n.t(:user_name, scope: :"activerecord.attributes.comment")-%></b>
   <%= @comment.user_name %>
 </p>
 
 <p>
-  <b>Body:</b>
+  <b><%= I18n.t(:body, scope: :"activerecord.attributes.comment")-%></b>
   <%= simple_format @comment.body %>
 </p>
 
 <p>
-  <b>Idea:</b>
-  <%= @comment.idea.name %>
+  <b><%= I18n.t(:idea, scope: :"activerecord.attributes.comment")-%></b>
+  <%= link_to @comment.idea.name,  idea_path(@comment.idea)-%>
 </p>
 
-
-<%= link_to 'Edit', edit_comment_path(@comment), class: :btn %>
-<%= link_to 'Back to index', comments_path, class: :btn %>
+<%= link_to I18n.t(:edit,          scope: :"views.buttons"), edit_comment_path(@comment), class: :btn %>
+<%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), comments_path, class: :btn %>

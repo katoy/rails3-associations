@@ -17,6 +17,6 @@
   <%= f.hidden_field :idea_id %>
   <div class="controls">
     <%= f.button :submit %>
-    <%= link_to "Cancel", :back, class: :btn %>
+    <%= link_to I18n.t(:cancel, scope: :"views.buttons"), :back, class: :btn %>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
-<h1>Editing comment</h1>
+<h1><%= I18n.t(:title_edit_comment, scope: :"views.labels") -%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @comment, class: :btn %>
-<%= link_to 'Back to index', comments_path, class: :btn %>
+<%= link_to I18n.t(:show,          scope: :"views.buttons"), @comment, class: :btn %>
+<%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), comments_path, class: :btn %>

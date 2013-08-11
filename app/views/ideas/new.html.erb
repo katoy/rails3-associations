@@ -1,5 +1,5 @@
-<h1>New idea</h1>
+<h1><%= I18n.t(:title_new_idea, scope: :"views.labels") -%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back to index', ideas_path, class: :btn %>
+<%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), ideas_path, class: :btn %>

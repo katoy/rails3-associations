@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature "routes" do
+feature "routes", :js => true do
   before do
     Capybara.current_driver = :poltergeist
   end
@@ -20,7 +20,7 @@ feature "routes" do
     # ルート画面
     sno = my_screenshot(sno, "root")
     
-    click_on 'New Idea'
+    click_on '新規登録'
     current_path.should == "/ideas/new"
     # アイデア登録フォーム
     sno = my_screenshot(sno, "index_form")
@@ -31,7 +31,7 @@ feature "routes" do
     sno = my_screenshot(sno, "index_form_error")
     
     fill_in "名前",        with: :"アイデァ001" 
-    fill_in "Description", with: :"アイデア001\n詳細\内容"
+    fill_in "本文",        with: :"アイデア001\n詳細\内容"
     sno = my_screenshot(sno, "index_form_fill_data")
 
     click_on '登録する'
@@ -40,7 +40,7 @@ feature "routes" do
     sno = my_screenshot(sno, "index_new_ok")
 
     fill_in "名前", with: :"katoy" 
-    fill_in "Body", with: :"コメント内容"
+    fill_in "本文", with: :"コメント内容"
     sno = my_screenshot(sno, "comment_form_filled")
 
     click_on '登録する'
@@ -48,12 +48,12 @@ feature "routes" do
     # コメント登録 フォーム
     sno = my_screenshot(sno, "comment_new_ok")
 
-    click_on 'Edit'
+    click_on '編集'
     current_path.should == "/comments/1/edit"
     # コメント編集 フォーム
     sno = my_screenshot(sno, "comment_form_edit")
 
-    fill_in "Body", with: :"コメント内容XXX"
+    fill_in "本文", with: :"コメント内容XXX"
     sno = my_screenshot(sno, "comment_form_edit_filled")
 
     click_on '更新する'
@@ -61,7 +61,7 @@ feature "routes" do
     # コメント内容表示
     sno = my_screenshot(sno, "comment_edit_ok")
 
-    click_on 'Back to index'
+    click_on '一覧へ戻る'
     current_path.should == "/comments"
     # コメント内容表示
     sno = my_screenshot(sno, "comments")
@@ -71,27 +71,29 @@ feature "routes" do
     # コメント内容表示
     sno = my_screenshot(sno, "ideas")
 
-    click_on 'Show'
+    click_on '表示'
     current_path.should == "/ideas/1"
     # コメント内容表示
     sno = my_screenshot(sno, "idea_show_1")
 
-    click_on 'Back to index'
+    click_on '一覧へ戻る'
     current_path.should == "/ideas"
     # アイデア一覧
     sno = my_screenshot(sno, "ideas")
 
-    click_on 'Edit'
+    click_on '編集'
     current_path.should == "/ideas/1/edit"
     # アイデア内容表示
     sno = my_screenshot(sno, "idea_form_edit_1")
 
-    click_on 'Back to index'
+    click_on '一覧へ戻る'
     current_path.should == "/ideas"
     # アイデア内容表示
     sno = my_screenshot(sno, "ideas")
 
-    click_on 'Destroy'
+    click_on '削除'
+    alert = page.driver.browser.switch_to.alert
+
     current_path.should == "/ideas"
     # アイデア削除確認
     sno = my_screenshot(sno, "idea_delete_1")

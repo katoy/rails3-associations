@@ -1,37 +1,49 @@
-<p id="notice"><%= notice %></p>
+<h1><%= I18n.t(:title_show_idea, scope: :"views.labels") -%></h1>
 
 <p>
-  <b>Name:</b>
+  <b><%= I18n.t(:name, scope: :"activerecord.attributes.idea")-%></b>
   <%= @idea.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= I18n.t(:description, scope: :"activerecord.attributes.idea")-%></b>
   <%= simple_format @idea.description %>
 </p>
 
 <p>
-  <b>Picture:</b>
+  <b><%= I18n.t(:picture, scope: :"activerecord.attributes.idea")-%></b>
   <%= image_tag(@idea.picture_url, width: 400) if @idea.picture.present? %>
 </p>
 
-<strong>コメントの追加：</strong>
-
-<% @idea.comments.each_with_index do |comment, idx| %>
-  <% if comment.created_at %>
+<strong><%= I18n.t(:comment, scope: :"views.labels") -%></strong>
+<table>
+  <tbody>
+    <tr>
+    <% @idea.comments.each_with_index do |comment, idx| %>
+    <% if comment.created_at %>
     <div>
-      <%= "No. #{idx + 1}:" -%>
-      <strong><%= "#{comment.user_name}" -%></strong>
-      <%= link_to 'Edit', edit_comment_path(comment), class: :btn %>
-      <%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn %>
-      <p>
-	<%= simple_format comment.body -%>
-      </p>
-    </div>
-  <% end %>
-<% end %>
+      <td><%= "No. #{idx + 1}:" -%></td>
+      <td>
+	<strong><%= "#{comment.user_name}" -%></strong>
+	<%= link_to I18n.t(:edit,    scope: :"views.buttons"), edit_comment_path(comment), class: :btn %>
+	<%= link_to I18n.t(:destroy, scope: :"views.buttons"), comment, method: :delete, data: { confirm: '削除しますか?' }, class: :btn %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= simple_format comment.body -%></td>
+    </tr>
+    <% end %>
+    <% end %>
+      </tr>
+  </tbody>
+</table>
 
-<%= render 'comments/form' %>
+<div>
+  <strong><%= I18n.t(:add_comment, scope: :"views.labels") -%></strong>
+  <%= render 'comments/form' %>
+</div>
 
-<%= link_to 'Edit', edit_idea_path(@idea), class: :btn %>
-<%= link_to 'Back to index', ideas_path, class: :btn %>
+<%= link_to I18n.t(:edit,          scope: :"views.buttons"), edit_idea_path(@idea), class: :btn %>
+<%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), ideas_path, class: :btn %>
+

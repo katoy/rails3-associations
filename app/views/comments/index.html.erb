@@ -1,13 +1,13 @@
-<h1>Listing comments</h1>
+<h1><%= I18n.t(:title_listing_comment, scope: :"views.labels") -%></h1>
 
 <% if @comments == nil or @comments.size == 0 %>
-  コメントはまだありません。
+  <%= I18n.t(:no_comments, scope: :"views.labels")-%>
 <% else %>
   <table class="table table-striped table-condensed table-hover">
     <tr>
-      <th>User name</th>
-      <th>Body</th>
-      <th>Idea</th>
+      <th><%= I18n.t(:user_name, scope: :"activerecord.attributes.comment")-%></th>
+      <th><%= I18n.t(:body,      scope: :"activerecord.attributes.comment")-%></th>
+      <th><%= I18n.t(:idea,      scope: :"activerecord.attributes.comment")-%></th>
       <th></th>
     </tr>
     
@@ -15,11 +15,11 @@
     <tr>
       <td><%= comment.user_name -%></td>
       <td><%= simple_format comment.body -%></td>
-      <td><%= comment.idea.name -%></td>
+      <td><%= link_to comment.idea.name,  idea_path(comment.idea)-%></td>
       <td nowrap>
-	<%= link_to 'Show', comment, class: :btn -%>
-        <%= link_to 'Edit', edit_comment_path(comment), class: :btn -%>
-	<%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' }, class: :btn -%>
+	<%= link_to I18n.t(:show, scope:    :"views.buttons"), comment, class: :btn -%>
+        <%= link_to I18n.t(:edit, scope:    :"views.buttons"), edit_comment_path(comment), class: :btn -%>
+	<%= link_to I18n.t(:destroy, scope: :"views.buttons"), comment, method: :delete, data: { confirm: '削除しますか?' }, class: :btn -%>
       </td>
     </tr>
     <% end %>

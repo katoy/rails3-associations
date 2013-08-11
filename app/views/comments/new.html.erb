@@ -1,5 +1,5 @@
-<h1>New comment</h1>
+<h1><%= I18n.t(:title_new_comment, scope: :"views.labels") -%></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back to show', comments_path, class: :btn %>
+<%= link_to I18n.t(:back_to_show, scope: :"views.buttons"), comments_path, class: :btn %>
