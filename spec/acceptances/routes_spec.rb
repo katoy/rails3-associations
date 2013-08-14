@@ -92,7 +92,7 @@ feature "routes", :js => true do
     sno = my_screenshot(sno, "ideas")
 
     click_on '削除'
-    alert = page.driver.browser.switch_to.alert
+    #alert = page.driver.browser.switch_to.alert
 
     current_path.should == "/ideas"
     # アイデア削除確認
