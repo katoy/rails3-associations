@@ -12,8 +12,12 @@
     </div>
   <% end %>
 
-  <%= f.input :user_name %>
-  <%= f.input :body,  input_html: { class: 'span8', rows: 3 } %>
+  <%= f.hidden_field :lock_version %>
+  <% len_user_name = @comment.user_name ? @comment.user_name.length : 0 %>
+  <%= f.input :user_name, :hint => "#{len_user_name} / 32 chars", :required => true %>
+  <% len_body = @comment.body ? @comment.body.length : 0 %>
+  <%= f.input :body,  input_html: { class: 'span8', rows: 3 }, :hint => "#{len_body} / 4000 chars", :required => true %>
+  <%= f.input :picture %>
   <%= f.hidden_field :idea_id %>
   <div class="controls">
     <%= f.button :submit %>

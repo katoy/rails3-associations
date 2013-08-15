@@ -8,14 +8,16 @@
       <th><%= I18n.t(:user_name, scope: :"activerecord.attributes.comment")-%></th>
       <th><%= I18n.t(:body,      scope: :"activerecord.attributes.comment")-%></th>
       <th><%= I18n.t(:idea,      scope: :"activerecord.attributes.comment")-%></th>
+      <th><%= I18n.t(:picture,   scope: :"activerecord.attributes.comment")-%></th>
       <th></th>
     </tr>
     
     <% @comments.each do |comment| %>
     <tr>
       <td><%= comment.user_name -%></td>
-      <td><%= simple_format comment.body -%></td>
-      <td><%= link_to comment.idea.name,  idea_path(comment.idea)-%></td>
+      <td><%= hbr comment.body -%></td>
+      <td><%= link_to comment.idea.name,  idea_path(comment.idea) if comment.idea.present? -%></td>
+      <td>  <%= image_tag(comment.picture_url, width: 80) if comment.picture.present? %></td>
       <td nowrap>
 	<%= link_to I18n.t(:show, scope:    :"views.buttons"), comment, class: :btn -%>
         <%= link_to I18n.t(:edit, scope:    :"views.buttons"), edit_comment_path(comment), class: :btn -%>
@@ -24,5 +26,6 @@
     </tr>
     <% end %>
   </table>
+  <%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), ideas_path, class: :btn %>
 <% end %>  
 

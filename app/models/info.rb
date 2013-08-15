@@ -1,4 +1,4 @@
-class Info < ActiveRecord::Base
+class Info < MyBaseRecord
   belongs_to :idea, inverse_of: :info
   attr_accessible :idea, :writer, :idea_id
 

@@ -11,16 +11,16 @@ class CommentsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:comments)
   end
 
-  #test "should get new" do
-  #  get :new
-  #  assert_response :success
-  #end
+  test "should get new" do
+    get :new
+    assert_response :success
+  end
 
   test "should create comment" do
     assert_difference('Comment.count') do
-      post :create, comment: { body: @comment.body, user_name: @comment.user_name, idea_id: @comment.idea_id }
+      post :create, comment: { body: @comment.body, user_name: "xxxx", idea_id: @comment.idea_id }
     end
-
+  
     assert_redirected_to comment_path(assigns(:comment))
   end
 
@@ -35,8 +35,10 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment" do
-    put :update, id: @comment, comment: { body: @comment.body, user_name: @comment.user_name }
+    put :update, id: @comment, comment: { body: @comment.body, user_name: "xxxxx" }
+
     assert_redirected_to comment_path(assigns(:comment))
+    assert_equal "xxxxx", Comment.find_by_id(@comment).user_name
   end
 
   test "should destroy comment" do

@@ -1,42 +1,51 @@
 <h1><%= I18n.t(:title_show_idea, scope: :"views.labels") -%></h1>
 
-<p>
-  <b><%= I18n.t(:name, scope: :"activerecord.attributes.idea")-%></b>
-  <%= @idea.name %>
-</p>
+<table>
+  <tbody class="table">
+    <tr>
+      <td nowrap><b><%= I18n.t(:name, scope: :"activerecord.attributes.idea") -%></b></td>
+      <td nowrap ><%= @idea.name %></td>
+    </tr>
+    <tr>
+      <td nowrap><b><%= I18n.t(:description, scope: :"activerecord.attributes.idea") -%></b></td>
+      <td><%= hbr @idea.description %></td>
+    </tr>
+  </tbody>
+</table>
 
 <p>
-  <b><%= I18n.t(:description, scope: :"activerecord.attributes.idea")-%></b>
-  <%= simple_format @idea.description %>
-</p>
-
-<p>
-  <b><%= I18n.t(:picture, scope: :"activerecord.attributes.idea")-%></b>
-  <%= image_tag(@idea.picture_url, width: 400) if @idea.picture.present? %>
+  <b><%= I18n.t(:picture, scope: :"activerecord.attributes.idea") -%></b>
+  <%= image_tag(@idea.picture_url) if @idea.picture.present? %>
 </p>
 
 <strong><%= I18n.t(:comment, scope: :"views.labels") -%></strong>
 <table>
   <tbody>
     <tr>
-    <% @idea.comments.each_with_index do |comment, idx| %>
-    <% if comment.created_at %>
-    <div>
-      <td><%= "No. #{idx + 1}:" -%></td>
-      <td>
-	<strong><%= "#{comment.user_name}" -%></strong>
-	<%= link_to I18n.t(:edit,    scope: :"views.buttons"), edit_comment_path(comment), class: :btn %>
-	<%= link_to I18n.t(:destroy, scope: :"views.buttons"), comment, method: :delete, data: { confirm: '削除しますか?' }, class: :btn %>
-      </td>
+      <% @idea.comments.each_with_index do |comment, idx| %>
+      <% if comment.created_at %>
+      <div>
+	<td><%= "No. #{idx + 1}:" -%></td>
+	<td>
+	  <strong><%= "#{comment.user_name}" -%></strong>
+	  <%= link_to I18n.t(:edit,    scope: :"views.buttons"), edit_comment_path(comment), class: :btn %>
+	  <%= link_to I18n.t(:destroy, scope: :"views.buttons"), comment, method: :delete, data: { confirm: '削除しますか?' }, class: :btn %>
+	</td>
     </tr>
     <tr>
       <td></td>
-      <td><%= simple_format comment.body -%></td>
+      <td><%= hbr comment.body -%></td>
+    </tr>
+    <% if comment.picture.present? %>
+    <tr>
+      <td></td>
+      <td><%= image_tag(comment.picture_url, width: 80) -%></td>
     </tr>
     <% end %>
     <% end %>
-      </tr>
-  </tbody>
+    <% end %>
+</tr>
+</tbody>
 </table>
 
 <div>

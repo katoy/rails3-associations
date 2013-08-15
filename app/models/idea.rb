@@ -1,5 +1,5 @@
-class Idea < ActiveRecord::Base
-  attr_accessible :description, :name, :picture
+class Idea < MyBaseRecord
+  attr_accessible :description, :name, :picture, :lock_version
 
   mount_uploader :picture, PictureUploader
 
@@ -15,6 +15,7 @@ class Idea < ActiveRecord::Base
 
   has_many :pictures, as: :imageable
 
-  validates :name, length: (4..10), uniqueness: true
+  validates :name,        length: (4..32), uniqueness: true
+  validates :description, length: (1..4000)
   validates_associated :info
 end

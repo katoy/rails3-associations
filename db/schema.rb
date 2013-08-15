@@ -14,30 +14,35 @@
 ActiveRecord::Schema.define(:version => 20130722133736) do
 
   create_table "comments", :force => true do |t|
-    t.string   "user_name"
-    t.text     "body"
-    t.integer  "idea_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "user_name",    :limit => 32
+    t.text     "body",         :limit => 4000
+    t.string   "picture"
+    t.integer  "idea_id",                                     :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
+    t.integer  "lock_version",                 :default => 0
   end
 
   add_index "comments", ["idea_id"], :name => "index_comments_on_idea_id"
 
   create_table "ideas", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
+    t.string   "name",           :limit => 32
+    t.text     "description",    :limit => 4000
     t.string   "picture"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "comments_count",                 :default => 0
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.integer  "lock_version",                   :default => 0
   end
 
   add_index "ideas", ["name"], :name => "index_ideas_on_name", :unique => true
 
   create_table "infos", :force => true do |t|
-    t.string   "writer",     :null => false
-    t.integer  "idea_id",    :null => false
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "writer",       :limit => 32,                :null => false
+    t.integer  "idea_id",                                   :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.integer  "lock_version",               :default => 0
   end
 
   create_table "pictures", :force => true do |t|

@@ -1,19 +1,26 @@
 <h1><%= I18n.t(:title_show_comment, scope: :"views.labels") -%></h1>
 
-<p>
-  <b><%= I18n.t(:user_name, scope: :"activerecord.attributes.comment")-%></b>
-  <%= @comment.user_name %>
-</p>
-
-<p>
-  <b><%= I18n.t(:body, scope: :"activerecord.attributes.comment")-%></b>
-  <%= simple_format @comment.body %>
-</p>
-
-<p>
-  <b><%= I18n.t(:idea, scope: :"activerecord.attributes.comment")-%></b>
-  <%= link_to @comment.idea.name,  idea_path(@comment.idea)-%>
-</p>
+<table>
+  <thead>
+    <tr>
+      <td><b><%= I18n.t(:user_name, scope: :"activerecord.attributes.comment")-%></b></td>
+      <td><%= @comment.user_name %></td>
+    </tr>
+    <tr>
+      <td><b><%= I18n.t(:body, scope: :"activerecord.attributes.comment")-%></b></td>
+      <td><%= hbr @comment.body %></td>
+    </tr>
+    <tr>
+      <td><b><%= I18n.t(:idea, scope: :"activerecord.attributes.comment")-%></b></td>
+      <td><%= link_to @comment.idea.name,  idea_path(@comment.idea)-%></td>
+    </tr>
+    <tr>
+      <td><b><%= I18n.t(:picture, scope: :"activerecord.attributes.comment")-%></b></td>
+      <td>  <%= image_tag(@comment.picture_url) if @comment.picture.present? %></td>
+    </tr>
+  </thead>
+</table>
+    
 
 <%= link_to I18n.t(:edit,          scope: :"views.buttons"), edit_comment_path(@comment), class: :btn %>
 <%= link_to I18n.t(:back_to_index, scope: :"views.buttons"), comments_path, class: :btn %>

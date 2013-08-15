@@ -5,9 +5,11 @@ ja:
         name:        名前
         description: 本文
         picture:     イメージ図
+        comments_count: コメント数
       comment:
         user_name:   名前
         body:        本文
+        picture:     イメージ図
         idea:        アイデア
       info:
         writer:      名前

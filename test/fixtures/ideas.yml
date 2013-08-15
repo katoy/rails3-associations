@@ -3,7 +3,11 @@
 one:
   name: IDEA_001
   description: MyText 001
+  comments_count: 2
 
 two:
   name: IDEA_002
   description: MyText 002
+  comments_count: 1
+  id: 102
+  picture: fish.jpg 
