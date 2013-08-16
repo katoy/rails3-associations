@@ -69,11 +69,16 @@
    子データの親データとしてアクセスしたものが、自分自身そのものになる
  ことをテストしている。
 
- validates で 文字列長さ [4..10] の制限が有効なことをテストしている。
+ validates で 文字列長さ [4..32] の制限が有効なことをテストしている。
 
 * $ rake erd orientation=vertical filetype=png
 
  ./erd.png として ER 図を生成する。
+
+
+* $ rake spec
+
+主な画面のスクリーンショットを撮る  (./screenshots/*.png)
 
 
 See
