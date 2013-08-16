@@ -1,12 +1,12 @@
 <%= simple_form_for(@idea, :html => {:class => 'form-horizontal' }) do |f| %>
   <%= f.hidden_field :lock_version %>
-  <% len_name = @idea.name ? @idea.name.length : 0 %>
-  <%= f.input :name, :hint => "#{len_name} / 32 chars", :required => true %>
-  <% len_description = @idea.description ? @idea.description.length : 0 %>
-  <%= f.input :description, input_html: { class: 'span8', rows: 3 }, :hint => "#{len_description} / 4000 chars", :required => true %>
+  <%= f.input :name, :required => true, :hint => "_" %>
+  <%= f.input :description, input_html: { class: 'span8', rows: 3 }, :required => true, :hint => "_" %>
   <%= f.input :picture %>
   <div class="controls">
     <%= f.button :submit %>
     <%= link_to I18n.t(:cancel, scope: :"views.buttons"), :back, class: :btn %>
   </div>
 <% end %>
+
+
