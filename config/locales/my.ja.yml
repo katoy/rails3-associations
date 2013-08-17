@@ -38,3 +38,5 @@ ja:
       add_comment:           コメントを追加する
       no_ideas:              アイデアはまだ登路されていません。
       no_comments:           コメントはまだ登路されていません。
+    errors:
+      conflict_edit:         別の方が先に更新しました。最新データを読みなおしてから再度 操作してください。

@@ -33,15 +33,15 @@ class MyBaseRecord < ActiveRecord::Base
     end
   end
 
-  alias_method :original_update_attributes!, :update_attributes!
-  def update_attributes!(*args)
-    begin
-      original_update_attributes!(*args)
-    rescue ActiveRecord::StaleObjectError => e
-      add_error
-      raise e
-    end
-  end
+  #alias_method :original_update_attributes!, :update_attributes!
+  #def update_attributes!(*args)
+  #  begin
+  #    original_update_attributes!(*args)
+  #  rescue ActiveRecord::StaleObjectError => e
+  #    add_error
+  #    raise e
+  #  end
+  #end
 
   alias_method :original_destroy, :destroy
   def destroy(*args)
@@ -49,7 +49,7 @@ class MyBaseRecord < ActiveRecord::Base
       original_destroy(*args)
     rescue ActiveRecord::StaleObjectError
       add_error
-      false
+      0
     end
   end
 
@@ -59,13 +59,13 @@ class MyBaseRecord < ActiveRecord::Base
       original_delete(*args)
     rescue ActiveRecord::StaleObjectError
       add_error
-      false
+      0
     end
   end
 
   private
 
   def add_error
-    errors.add :any, "Someone else already updated this data. Please back and re-edit!"
+    errors.add :" ", I18n.t(:"conflict_edit", scope: :"views.errors")
   end
 end
