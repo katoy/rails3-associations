@@ -82,4 +82,6 @@ gem 'yard', require: false
 
 gem 'coveralls', require: false
 
+gem 'log4r'
+
 # gem 'passenger'

@@ -1,0 +1,42 @@
+# config/log4r.yml
+
+log4r_config:
+  loggers:
+    - name      : development
+      level     : DEBUG
+      trace     : 'true'
+      outputters :
+      - development_log
+    - name      : test
+      level     : DEBUG
+      trace     : 'true'
+      outputters :
+      - test_log
+    - name      : production
+      level     : WARN
+      trace     : 'false'
+      outputters :
+      - production_log
+
+  outputters:
+  - type: FileOutputter
+    name: development_log
+    filename: 'log/development.log'
+    formatter:
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
+      type        : PatternFormatter
+  - type: FileOutputter
+    name: test_log
+    filename: 'log/test.log'
+    formatter:
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
+      type        : PatternFormatter
+  - type: FileOutputter
+    name: production_log
+    filename: 'log/production.log'
+    formatter:
+      date_pattern: '%Y/%m/%d %H:%M:%S'
+      pattern     : '%d [%l]: %M'
+      type        : PatternFormatter
