@@ -40,3 +40,8 @@ ja:
       no_comments:           コメントはまだ登路されていません。
     errors:
       conflict_edit:         別の方が先に更新しました。最新データを読みなおしてから再度 操作してください。
+    messages:
+      success_create_idea:    アイデアを新規登録をしました。
+      success_update_idea:    アイデアを更新をしました。
+      success_create_comment: コメントを新規登録をしました。
+      success_update_comment: コメントを更新しました。
