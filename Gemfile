@@ -15,16 +15,18 @@ gem 'carrierwave'
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
-  gem 'less-rails'
   gem 'coffee-rails'
 
-  gem 'twitter-bootstrap-rails'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end
+
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap_helper'
 
 gem 'simple_form'
 

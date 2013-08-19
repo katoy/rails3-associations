@@ -4,4 +4,4 @@
 
 $ ->
   counter_bind('#comment_user_name', 32)
-  counter_bind('#idea_body', 4000)
+  counter_bind('#comment_body', 4000)
