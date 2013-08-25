@@ -80,6 +80,10 @@
 
 主な画面のスクリーンショットを撮る  (./screenshots/*.png)
 
+* $ bundle viz
+
+gem の依存関係を gem_graph.png として出力する。
+
 
 See
 ====

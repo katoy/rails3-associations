@@ -26,7 +26,6 @@ end
 
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
-gem 'bootstrap_helper'
 
 gem 'simple_form'
 
@@ -75,6 +74,7 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-rails', '>= 2.0.0', :group => :development
+  gem 'factory_girl_rails', '~> 4.2.1'
 end
 
 gem 'i18n-missing_translations'
