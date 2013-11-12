@@ -5,6 +5,7 @@
 
 １対多
 -------
+
 　　idea (1) <--> (m) comment
 
 　　[idea]
@@ -14,8 +15,13 @@
 　　　belongs_to :idea, inverse_of: :comments
 　　　t:references :comment
 　　
+　　Idea.first.comments
+　　Comment.first.idea
+
+
 １対１
 -------
+
 　　idea (1) <--> (1) info
 
 　　[idea]
@@ -24,16 +30,23 @@
 　　[info]
 　　　belongs_to :idea, , inverse_of: :info
 　　　t:references :comment
+　　
+　　Idea.first.info
+　　Info.first.idea
 
 多対多 (not yet)
 ------
+
 　　idea (m) <--> (m) idea
+　　
+　　
 
 ポリモフィック（polymorphic）関連
 ----------
-    idea    --|
-	          |-- picture
-    comment --|  
+
+    idea    --| (1)
+                      (m) |-- picture
+    comment --| (1) 
 
 　　[idea]
 　　　has_many :pictures, as: :imageable
@@ -46,12 +59,17 @@
 
 　　in Fixture:
       imageable:  one (idea)
-　　　imageable:  one (commnet)
+　　　imageable:  one (comment)
+　　
+　　Idea.first.pictures
+　　Idea.first.picture_ids
+　　Comment.first.pictures
+　　Comment.first.picture_ids
 
 操作
 -----
 
-    $ bundle instal
+    $ bundle install
     $ rake db:drop
     $ rake db:create
     $ rake db:migrate

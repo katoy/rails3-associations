@@ -5,5 +5,9 @@ one:
   imageable: one (Idea)
 
 two:
-  name: picturer_2
+  name: picture_2
+  imageable: comment_1 (Comment)
+
+tree:
+  name: picture_3
   imageable: comment_1 (Comment)
