@@ -6,65 +6,65 @@
 １対多
 -------
 
-　　idea (1) <--> (m) comment
+    idea (1) <--> (m) comment
 
-　　[idea]
-    　has_many :comments, dependent: :destroy, :inverse_of => :idea
-
-　　[comment]
-　　　belongs_to :idea, inverse_of: :comments
-　　　t:references :comment
-　　
-　　Idea.first.comments
-　　Comment.first.idea
+　　[idea]  
+    　has_many :comments, dependent: :destroy, :inverse_of => :idea  
+　　  
+　　[comment]  
+　　　belongs_to :idea, inverse_of: :comments  
+　　　t:references :comment  
+　　  
+　　Idea.first.comments  
+　　Comment.first.idea  
 
 
 １対１
 -------
 
-　　idea (1) <--> (1) info
+    idea (1) <--> (1) info
 
-　　[idea]
-　　　has_one :info, dependent: :destroy, :inverse_of => :idea
-
-　　[info]
-　　　belongs_to :idea, , inverse_of: :info
-　　　t:references :comment
-　　
-　　Idea.first.info
-　　Info.first.idea
+　　[idea]  
+　　　has_one :info, dependent: :destroy, :inverse_of => :idea  
+　　  
+　　[info]  
+　　　belongs_to :idea, , inverse_of: :info  
+　　　t:references :comment  
+　　  
+　　Idea.first.info  
+　　Info.first.idea  
 
 多対多 (not yet)
 ------
 
-　　idea (m) <--> (m) idea
+    idea (m) <--> (m) idea
 　　
 　　
 
 ポリモフィック（polymorphic）関連
 ----------
 
-    idea    --| (1)
-                      (m) |-- picture
-    comment --| (1) 
+    idea    --| (1)  
+                      (m) |-- picture  
+    comment --| (1)   
 
-　　[idea]
-　　　has_many :pictures, as: :imageable
-
-　　[comment]
-　　　has_many :pictures, as: :imageable
-
-　　[picture]
-　　　belongs_to: imageable, polymorphic: true
-
-　　in Fixture:
-      imageable:  one (idea)
-　　　imageable:  one (comment)
-　　
-　　Idea.first.pictures
-　　Idea.first.picture_ids
-　　Comment.first.pictures
-　　Comment.first.picture_ids
+　　[idea]  
+　　　has_many :pictures, as: :imageable  
+　　  
+　　[comment]  
+　　　has_many :pictures, as: :imageable  
+　　  
+　　[picture]  
+　　　belongs_to: imageable, polymorphic: true  
+　　  
+　　in Fixture:  
+　　  imageable:  one (idea)  
+　　  imageable:  one (comment)  
+　　  
+　　Idea.first.pictures  
+　　Idea.first.picture_ids  
+　　Comment.first.pictures  
+　　Comment.first.picture_ids  
 
 操作
 -----
@@ -105,25 +105,25 @@ gem の依存関係を gem_graph.png として出力する。
 
 See
 ====
-- http://railsdoc.com/references/belongs_to
-　　Railsドキュメント: belongs_to
-- http://railsdoc.com/references/has_one
-　　Railsドキュメント: has_one
+- http://railsdoc.com/references/belongs_to  
+　　Railsドキュメント: belongs_to  
+- http://railsdoc.com/references/has_one  
+　　Railsドキュメント: has_one  
 
-- http://merrill777.blog135.fc2.com/blog-date-201304.html
-　　Rails3.2 でWebアプリケーションを作成
+- http://merrill777.blog135.fc2.com/blog-date-201304.html  
+　　Rails3.2 でWebアプリケーションを作成  
 
-- http://railsgirls.jp/app/
-　　Rails Girls アプリ・チュートリアル
+- http://railsgirls.jp/app/  
+　　Rails Girls アプリ・チュートリアル  
 
-- http://www.nullislove.com/2008/01/08/testing-in-rails-part-7-activerecord-relationships/
-　　Testing in Rails: Part 7 – ActiveRecord Relationships
+- http://www.nullislove.com/2008/01/08/testing-in-rails-part-7-activerecord-relationships/  
+　　Testing in Rails: Part 7 – ActiveRecord Relationships  
 
-- http://d.hatena.ne.jp/shindo_r/20130227/1361930960
-　　inverse_of を使うと何ができるのか
+- http://d.hatena.ne.jp/shindo_r/20130227/1361930960  
+　　inverse_of を使うと何ができるのか  
 
-- http://memo.yomukaku.net/entries/187
-　　validates :uniquenessはuniquenessを保証しないのでDBにindexをつけましょう！
+- http://memo.yomukaku.net/entries/187  
+　　validates :uniquenessはuniquenessを保証しないのでDBにindexをつけましょう！  
 
-- http://ruby-journal.com/rails/define-fixtures-with-polymorphic-association/
-　　Define Fixtures With Polymorphic Association
+- http://ruby-journal.com/rails/define-fixtures-with-polymorphic-association/  
+　　Define Fixtures With Polymorphic Association  
