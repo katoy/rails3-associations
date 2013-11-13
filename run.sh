@@ -15,6 +15,8 @@ bundle viz
 rake db:drop
 rake db:migrate
 rake db:fixtures:load
+rake fixtures
+rake show
 
 rake test
 rake spec

@@ -34,12 +34,25 @@
 　　Idea.first.info  
 　　Info.first.idea  
 
-多対多 (not yet)
+多 対 多
 ------
 
-    idea (m) <--> (m) idea
+    assembly (m) <--> (m) part
 　　
-　　
+　　[assenly]  
+　　   has_and_belongs_to_many :parts  
+　　  
+　　[part]  
+　　   has_and_belongs_to_many :assemblies  
+　　  
+　　[assenblies_parts]  
+　　   t:belongs_to :assenbly  
+　　   t:belongs_to :part  
+　　  
+　　  
+　　Assembly.last.parts  
+　　Part.last.assemblies  
+　　  
 
 ポリモフィック（polymorphic）関連
 ----------

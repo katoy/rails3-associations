@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 1
+  name: car_1
+
+two:
+  id: 2
+  name: car_2
+
+tree:
+  id: 3
+  name: car_3
