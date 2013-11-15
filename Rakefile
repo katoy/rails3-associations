@@ -16,6 +16,17 @@ task fixtures: :connect do
   as[0].parts = [ps[0], ps[1], ps[2]]
   as[1].parts = [       ps[1]       ]
   as[2].parts = [       ps[1], ps[2]]
+
+  ps = Part2.all
+  xs = Xassembly.all
+  xs[0].part2s = [ps[0], ps[1], ps[2]]
+  xs[1].part2s = [       ps[1]       ]
+  xs[2].part2s = [       ps[1], ps[2]]
+
+  ys = Yassembly.all
+  ys[0].part2s = [                   ]
+  ys[1].part2s = [ps[0],        ps[2]]
+  ys[2].part2s = [ps[0]              ]  
 end
 
 desc 'Show db'
@@ -60,6 +71,47 @@ task show: :connect do
     a_p << row
   }
   puts a_p.join("\n")
+
+  p_a = []
+  puts '------- Xassembly \ part2 -------'
+  head = "\t|"
+  Part2.all.each { |p| head += "#{p.name}|" }
+  p_a << head
+  Xassembly.all.each { |a|
+    row = "#{a.name}\t| "
+    unless a.part2s
+      row += "\t|" * Part.count
+    else
+      part2s = a.part2s
+      Part2.all.each { |p|
+        cell = part2s.index(p) ? "  *\t|" : "\t|"
+        row += cell
+      }
+    end
+    p_a << row
+  }
+  puts p_a.join("\n")
+
+  p_a = []
+  puts '------- Yassembly \ part2 -------'
+  head = "\t|"
+  Part2.all.each { |p| head += "#{p.name}|" }
+  p_a << head
+  Yassembly.all.each { |a|
+    row = "#{a.name}\t| "
+    unless a.part2s
+      row += "\t|" * Part.count
+    else
+      part2s = a.part2s
+      Part2.all.each { |p|
+        cell = part2s.index(p) ? "  *\t|" : "\t|"
+        row += cell
+      }
+    end
+    p_a << row
+  }
+  puts p_a.join("\n")
+
 end
 
 task connect: :environment do

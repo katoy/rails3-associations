@@ -79,6 +79,36 @@
 　　Comment.first.pictures  
 　　Comment.first.picture_ids  
 
+多 対 多 and ポリモフィック（polymorphic）関連
+----------
+
+    xassembly (m) --|  
+                     (m) |-- part2  
+    yassembly (m) --|   
+
+　　[xassenbly]  
+　　　has_many :subscriptions, :as => :attendee  
+　　　has_many :part2s, :through => :subscriptions  
+　　  　　  
+　　[yassembly]  
+　　　has_many :subscriptions, :as => :attendee  
+　　　has_many :part2s, :through => :subscriptions  
+　　  　　  
+　　[part2]  
+　　　has_many :subscriptions    
+　　  　　  
+　　[subscription]  
+　　  t.belongs_to :attendee, polymorphic: true  
+　　  t.belongs_to :part2  
+　　  
+　　in Fixture:  
+　　  imageable:  one (idea)  
+　　  imageable:  one (comment)  
+　　  
+　　Xassembly.first.port2s  
+　　Yassembly.first.port2s  
+　　Part2.first.subscriptions  
+
 操作
 -----
 
@@ -87,6 +117,8 @@
     $ rake db:create
     $ rake db:migrate
     $ rake db:fixtures:load
+    $ rake fixtures
+    $ rake show
     $ rake test
     $ rails s
 
@@ -118,8 +150,10 @@ gem の依存関係を gem_graph.png として出力する。
 
 See
 ====
+
 - http://railsdoc.com/references/belongs_to  
 　　Railsドキュメント: belongs_to  
+
 - http://railsdoc.com/references/has_one  
 　　Railsドキュメント: has_one  
 
@@ -140,3 +174,7 @@ See
 
 - http://ruby-journal.com/rails/define-fixtures-with-polymorphic-association/  
 　　Define Fixtures With Polymorphic Association  
+
+- http://stackoverflow.com/questions/6964678/habtm-polymorphic-relationship  
+    HABTM Polymorphic Relationship  
+

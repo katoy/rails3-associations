@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113153736) do
+ActiveRecord::Schema.define(:version => 20131115163736) do
 
   create_table "assemblies", :force => true do |t|
     t.string   "name",       :limit => 32
@@ -56,6 +56,12 @@ ActiveRecord::Schema.define(:version => 20131113153736) do
     t.integer  "lock_version",               :default => 0
   end
 
+  create_table "part2s", :force => true do |t|
+    t.string   "name",       :limit => 32
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "parts", :force => true do |t|
     t.string   "name",       :limit => 32
     t.datetime "created_at",               :null => false
@@ -72,6 +78,18 @@ ActiveRecord::Schema.define(:version => 20131113153736) do
 
   add_index "pictures", ["imageable_id"], :name => "index_pictures_on_imageable_id"
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer "attendee_id"
+    t.string  "attendee_type"
+    t.integer "part2_id"
+  end
+
+  create_table "xassemblies", :force => true do |t|
+    t.string   "name",       :limit => 32
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "xcomments", :force => true do |t|
     t.string   "user_name"
     t.text     "body"
@@ -87,6 +105,12 @@ ActiveRecord::Schema.define(:version => 20131113153736) do
     t.integer  "idea_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "yassemblies", :force => true do |t|
+    t.string   "name",       :limit => 32
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
 end
