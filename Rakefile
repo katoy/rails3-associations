@@ -112,6 +112,33 @@ task show: :connect do
   }
   puts p_a.join("\n")
 
+  p_a = []
+  puts '------- part2 \ Assembly -------'
+  head = "\t|Assemblies"
+  p_a << head
+  Part2.all.each { |p|
+    row = "#{p.name}\t| "
+    unless p.subscriptions
+      row += "\t|"
+    else
+      p.subscriptions.each { |s|
+        row += "#{s.attendee_type}:#{s.attendee.name}, "
+      }
+    end
+    p_a << row
+  }
+  puts p_a.join("\n")
+end
+
+desc 'Show db using table_print'
+task table_print: :connect do
+  tp Xassembly.includes(:part2s), "name", "part2s.name"
+  puts
+  tp Yassembly.includes(:part2s), "name", "part2s.name"
+  puts
+  tp Part2.includes(:subscriptions), "name", "subscriptions.attendee_type", "subscriptions.attendee.name"
+  puts
+  tp Subscription.all
 end
 
 task connect: :environment do

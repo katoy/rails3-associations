@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
@@ -85,5 +86,6 @@ gem 'yard', require: false
 gem 'coveralls', require: false
 
 gem 'log4r'
+gem 'table_print'
 
 # gem 'passenger'

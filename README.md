@@ -119,6 +119,7 @@
     $ rake db:fixtures:load
     $ rake fixtures
     $ rake show
+    $ rake table_print
     $ rake test
     $ rails s
 
