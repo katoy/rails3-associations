@@ -132,6 +132,8 @@ end
 
 desc 'Show db using table_print'
 task table_print: :connect do
+  tp Assembly.includes(:parts), "name", "parts.name"
+  puts
   tp Xassembly.includes(:part2s), "name", "part2s.name"
   puts
   tp Yassembly.includes(:part2s), "name", "part2s.name"

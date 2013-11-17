@@ -17,6 +17,7 @@ rake db:migrate
 rake db:fixtures:load
 rake fixtures
 rake show
+rale table_print
 
 rake test
 rake spec

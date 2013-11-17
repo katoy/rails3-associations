@@ -177,5 +177,8 @@ See
 　　Define Fixtures With Polymorphic Association  
 
 - http://stackoverflow.com/questions/6964678/habtm-polymorphic-relationship  
-    HABTM Polymorphic Relationship  
+　　HABTM Polymorphic Relationship  
+
+- http://wada811.blogspot.com/2013/07/model-relationships-and-association-in-rails.html  
+　　MVCモデルにおけるModelの関係性とRailsでのアソシエーションの設定  
 

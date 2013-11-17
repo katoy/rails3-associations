@@ -3,6 +3,7 @@
 one:
   id: 1
   name: part_1
+  assemblies: one, xxx
 
 two:
   id: 2

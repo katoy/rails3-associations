@@ -47,21 +47,21 @@ gem 'jquery-rails'
 # To use debugger
 gem 'debugger'
 
-group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-rails'
-end
-
 gem 'foreigner'
 gem 'carrierwave'
 gem 'mini_magick'
 
-group :development do
+group :development, :test do
   gem 'rails-erd'
   gem 'redcarpet', require: false
+  gem 'fabrication'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry'
+  gem 'pry-debugger'
+  gem 'pry-doc'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -75,7 +75,6 @@ group :test do
   gem 'database_cleaner'
   gem 'rspec'
   gem 'rspec-rails', '>= 2.0.0', :group => :development
-  gem 'factory_girl_rails', '~> 4.2.1'
 end
 
 gem 'i18n-missing_translations'
@@ -87,5 +86,6 @@ gem 'coveralls', require: false
 
 gem 'log4r'
 gem 'table_print'
+
 
 # gem 'passenger'
