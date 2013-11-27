@@ -148,6 +148,16 @@ task connect: :environment do
   ActiveRecord::Base.establish_connection(config)
 end
 
+namespace :mail do
+  desc 'fixuters for xmail, ymail, address'
+  task :fixtures => :conect do
+  end
+  desc ''
+  desc 'show for xmail, ymail, address'
+  task :show  => :connect do
+  end
+end
+
 task :environment do
   db_config_path = File.join(File.dirname(File.expand_path(__FILE__)), 'config', 'database.yml')
   db_config = YAML.load_file(db_config_path)

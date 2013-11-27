@@ -109,6 +109,39 @@
 　　Yassembly.first.port2s  
 　　Part2.first.subscriptions  
 
+Sample:
+-------
+
+          1
+    xmail -----|                   |--> m  xmail
+               |--> m address 1 ---|
+    ymail -----|                   |--> m  ymail
+          1
+
+    addressng
+        adr
+        adress
+    
+    xmail.addresses
+    ymail.addresses
+    address.adressings
+    address.adressings.adr
+    
+    [xmail]
+         has_many :addresses, :through => :addressings
+         has_many :addressings, :as => :adr
+    
+    [ymail]
+         has_many :addresses, :through => :addressings
+         has_many :addressings, :as => :adr
+        
+    [address]
+         has_many :addressings
+    
+    [addressing]
+         belongs_to adrs, :polymorphic => true
+         belongs_to address
+
 操作
 -----
 

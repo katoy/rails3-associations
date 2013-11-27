@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115163736) do
+ActiveRecord::Schema.define(:version => 20131118163736) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "kind",       :limit => 4
+    t.string   "val",        :limit => 256
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "addressings", :force => true do |t|
+    t.integer "adr_id"
+    t.string  "adr_type"
+    t.integer "addrsess_id"
+  end
 
   create_table "assemblies", :force => true do |t|
     t.string   "name",       :limit => 32
@@ -107,7 +120,19 @@ ActiveRecord::Schema.define(:version => 20131115163736) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "xmails", :force => true do |t|
+    t.string   "name",       :limit => 32
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
   create_table "yassemblies", :force => true do |t|
+    t.string   "name",       :limit => 32
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "ymails", :force => true do |t|
     t.string   "name",       :limit => 32
     t.datetime "created_at",               :null => false
     t.datetime "updated_at",               :null => false
