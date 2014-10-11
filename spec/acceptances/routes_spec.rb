@@ -6,11 +6,11 @@ feature "routes", :js => true do
   before do
     Capybara.current_driver = :poltergeist
   end
-  
+
   after do
     Capybara.current_driver = :rack_test
   end
-  
+
   scenario "can access" do
     sno = 0
 
@@ -19,18 +19,18 @@ feature "routes", :js => true do
     current_path.should == "/ideas"
     # ルート画面
     sno = my_screenshot(sno, "root")
-    
+
     click_on '新規登録'
     current_path.should == "/ideas/new"
     # アイデア登録フォーム
     sno = my_screenshot(sno, "index_form")
-    
+
     click_on '登録する'
     current_path.should == "/ideas"
     # アイデア登録フォーム 入力データ不足絵絵r−あ
     sno = my_screenshot(sno, "index_form_error")
-    
-    fill_in "名前",        with: :"アイデァ001" 
+
+    fill_in "名前",        with: :"アイデァ001"
     fill_in "本文",        with: :"アイデア001\n詳細\内容"
     sno = my_screenshot(sno, "index_form_fill_data")
 
@@ -39,7 +39,7 @@ feature "routes", :js => true do
     # アイデア登録フォーム 登録成功画面
     sno = my_screenshot(sno, "index_new_ok")
 
-    fill_in "名前", with: :"katoy" 
+    fill_in "名前", with: :"katoy"
     fill_in "本文", with: :"コメント内容"
     sno = my_screenshot(sno, "comment_form_filled")
 
