@@ -38,7 +38,8 @@ class ActiveSupport::TestCase
   end
 
   def assert_record_not_unique(&block)
-    assert_raise(ActiveRecord::RecordNotUnique, &block)
+    # assert_raise(ActiveRecord::RecordNotUnique, &block)
+    assert_raise(ActiveRecord::StatementInvalid, &block)
   end
 
   def assert_invalid_foreign_key(&block)

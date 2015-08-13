@@ -66,6 +66,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'test-unit', '~> 3.0'
   gem 'simplecov', require: false
   gem 'simplecov-rcov', require: false
   gem 'coveralls', require: false
